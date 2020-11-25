@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+   
+   <LDR>
+       <ip>localhost</ip>
+       <port>1521</port>
+       <name>XE</name>
+       <driver>oracle.jdbc.driver.OracleDriver</driver>
+       <connection-string>jdbc:oracle:thin:@172.22.41.209:1521:TSH1</connection-string>
+       <username>cvps</username>
+       <password>cvps</password>
+       <maxconnections>10</maxconnections>
+   </LDR>
+
+   <logging>
+       <log-dir>./logs</log-dir>
+       <file-prefix></file-prefix>
+   </logging>
+</datasources>

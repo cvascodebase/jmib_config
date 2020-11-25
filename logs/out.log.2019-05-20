@@ -1,0 +1,62 @@
+[2019-05-20 19:04:05,220] INFO  [main] MIB_Server - ************** STARTING MIB SERVER ******************
+[2019-05-20 19:04:05,229] INFO  [main] MIB_Server - Loading Properties ...
+[2019-05-20 19:04:05,229] INFO  [main] MIB_Server - Intializing Properties ...
+[2019-05-20 19:04:05,229] INFO  [main] MIB_Server - Staring Server ...
+[2019-05-20 19:04:05,229] INFO  [main] MIB_Server - Intializing Database .......
+[2019-05-20 19:04:05,317] DEBUG [main] ConfigurationUtils - Configuration loaded from the base path cfg/datasource_details.xml
+[2019-05-20 19:04:05,350] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> XE
+[2019-05-20 19:04:05,350] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> oracle.jdbc.driver.OracleDriver
+[2019-05-20 19:04:05,350] INFO  [main] DataSourceConfiguration - DATBASE IP IS        -> localhost
+[2019-05-20 19:04:05,350] INFO  [main] DataSourceConfiguration - DATBASE PORT IS      -> 1521
+[2019-05-20 19:04:05,351] INFO  [main] DataSourceConfiguration - DATBASE USERNAME IS  -> cvps
+[2019-05-20 19:04:05,351] INFO  [main] DataSourceConfiguration - DATBASE PASSWORD IS  -> ********
+[2019-05-20 19:04:05,351] INFO  [main] DataSourceConfiguration - DATBASE CONNSTRING IS-> jdbc:oracle:thin:@172.22.41.209:1521:TSH1
+[2019-05-20 19:04:05,351] INFO  [main] DataSourceConfiguration - DATBASE MAXCONNECTIONS IS-> 10
+[2019-05-20 19:04:05,351] INFO  [main] DataSourceConfiguration - DataSource Loaded Successfully 
+[2019-05-20 19:04:05,516] INFO  [main] MIB_Server - Database Intialization Completed .......
+[2019-05-20 19:04:05,516] INFO  [main] CVPSDao -  Fetching getSMSCAccounts ...
+[2019-05-20 19:04:08,683] ERROR [main] ConnectionAdaptor - 0 getConnectionInner : Cannot create PoolableConnectionFactory (The Network Adapter could not establish the connection)
+[2019-05-20 19:04:08,683] ERROR [main] CVPSDao -  Exception in getSMSCAccounts:Cannot create PoolableConnectionFactory (The Network Adapter could not establish the connection)
+[2019-05-20 19:04:08,686] ERROR [main] CVPSUtil - org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (The Network Adapter could not establish the connection)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549)
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388)
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044)
+	at pyro.common.db.DataSourceX.getConnection(DataSourceX.java:84)
+	at pyro.common.db.ConnectionAdaptor.getConnectionInner(ConnectionAdaptor.java:41)
+	at pyro.common.db.ConnectionAdaptor.<init>(ConnectionAdaptor.java:28)
+	at pyro.mib.db.CVPSDao.getSMSCAccounts(CVPSDao.java:49)
+	at pyro.mib.main.MIB_Server.loadSMSCAccounts(MIB_Server.java:79)
+	at pyro.mib.main.MIB_Server.startServer(MIB_Server.java:55)
+	at pyro.mib.main.MIB_Server.main(MIB_Server.java:221)
+Caused by: java.sql.SQLException: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:412)
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:531)
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:221)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:503)
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582)
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545)
+	... 9 more
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:359)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:422)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:672)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:237)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1042)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:301)
+	... 17 more
+Caused by: java.net.NoRouteToHostException: No route to host
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:141)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:123)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:337)
+	... 22 more
+
+[2019-05-20 19:04:08,687] ERROR [main] MIB_Server - Exception in main:null

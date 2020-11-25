@@ -1,0 +1,60 @@
+[2018-04-25 15:46:35,527] INFO  [main] MIB_Server - ************** STARTING MIB SERVER ******************
+[2018-04-25 15:46:35,553] INFO  [main] MIB_Server - Loading Properties ...
+[2018-04-25 15:46:35,554] INFO  [main] MIB_Server - Intializing Properties ...
+[2018-04-25 15:46:35,554] INFO  [main] MIB_Server - Staring Server ...
+[2018-04-25 15:46:35,554] INFO  [main] MIB_Server - Intializing Database .......
+[2018-04-25 15:46:35,682] DEBUG [main] ConfigurationUtils - Configuration loaded from the base path cfg/datasource_details.xml
+[2018-04-25 15:46:36,551] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> XE
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> oracle.jdbc.driver.OracleDriver
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE IP IS        -> localhost
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE PORT IS      -> 1521
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE USERNAME IS  -> cvps
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE PASSWORD IS  -> ********
+[2018-04-25 15:46:36,552] INFO  [main] DataSourceConfiguration - DATBASE CONNSTRING IS-> jdbc:oracle:thin:@172.22.41.209:1521:TSH1
+[2018-04-25 15:46:36,553] INFO  [main] DataSourceConfiguration - DATBASE MAXCONNECTIONS IS-> 10
+[2018-04-25 15:46:36,559] INFO  [main] DataSourceConfiguration - DataSource Loaded Successfully 
+[2018-04-25 15:47:54,430] INFO  [main] MIB_Server - ************** STARTING MIB SERVER ******************
+[2018-04-25 15:47:54,431] INFO  [main] MIB_Server - Loading Properties ...
+[2018-04-25 15:47:54,431] INFO  [main] MIB_Server - Intializing Properties ...
+[2018-04-25 15:47:54,431] INFO  [main] MIB_Server - Staring Server ...
+[2018-04-25 15:47:54,431] INFO  [main] MIB_Server - Intializing Database .......
+[2018-04-25 15:47:54,465] DEBUG [main] ConfigurationUtils - Configuration loaded from the base path cfg/datasource_details.xml
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> XE
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE DATASOURCE IS-> oracle.jdbc.driver.OracleDriver
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE IP IS        -> localhost
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE PORT IS      -> 1521
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE USERNAME IS  -> cvps
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE PASSWORD IS  -> ********
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE CONNSTRING IS-> jdbc:oracle:thin:@172.22.41.209:1521:TSH1
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DATBASE MAXCONNECTIONS IS-> 10
+[2018-04-25 15:47:54,489] INFO  [main] DataSourceConfiguration - DataSource Loaded Successfully 
+[2018-04-25 15:47:55,097] INFO  [main] MIB_Server - Database Intialization Completed .......
+[2018-04-25 15:47:55,098] INFO  [main] CVPSDao -  Fetching getSMSCAccounts ...
+[2018-04-25 15:47:58,883] INFO  [main] CVPSDao -  Query : SELECT * FROM TBL_MIB_SMSCACCOUNT_MASTER WHERE STATUS = 1 AND MIB_SERVICE_ID = 121
+[2018-04-25 15:47:59,253] INFO  [main] MIB_Server - filename : logs/csv/out.log
+[2018-04-25 15:47:59,282] INFO  [main] MIBService - Adding smsc account : localhost : 2775 : neeti : password : 57171 : 57171 : true : old_sessions : 0
+[2018-04-25 15:47:59,290] INFO  [main] MIB_Server - Intializing HTTP Server .......
+[2018-04-25 15:47:59,325] INFO  [main] MIB_Server - HTTP Server Intialization Completed .......
+[2018-04-25 15:47:59,326] INFO  [Thread-3] PyroHttpServer - Starting HTTP Server at port :20040
+[2018-04-25 15:48:00,188] INFO  [Thread-1] SMSCHandler - 57171 Connecting to SMSC ...
+[2018-04-25 15:48:00,241] DEBUG [Thread-1] SMPPSession - Connect and bind to localhost port 2775
+[2018-04-25 15:48:00,399] ERROR [Thread-1] SMSCHandler - 57171 Failed connect and bind to host
+[2018-04-25 15:48:00,400] INFO  [Thread-3] PyroHttpServer - HTTP Server startd at port :20040
+[2018-04-25 15:48:00,452] ERROR [Thread-1] SMSCHandler - java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at org.jsmpp.session.connection.socket.SocketConnectionFactory.createConnection(SocketConnectionFactory.java:39)
+	at org.jsmpp.session.SMPPSession.connectAndBind(SMPPSession.java:221)
+	at org.jsmpp.session.SMPPSession.connectAndBind(SMPPSession.java:200)
+	at pyro.mib.core.SMSCHandler.bind(SMSCHandler.java:153)
+	at pyro.mib.core.SMSCHandler.access$1(SMSCHandler.java:137)
+	at pyro.mib.core.SMSCHandler$SMSCConnector.run(SMSCHandler.java:195)
+	at java.lang.Thread.run(Thread.java:745)
+
